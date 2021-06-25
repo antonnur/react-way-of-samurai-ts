@@ -4,7 +4,7 @@
 }
 
 .dialogs a {
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
@@ -20,6 +20,6 @@
     padding: 10px;
 }
 
-.message {
-
+.messages .message{
+    color: white;
 }
