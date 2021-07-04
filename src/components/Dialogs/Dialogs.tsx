@@ -11,7 +11,7 @@ type MessageType = {
   message: string
 }
 
-const DialogItem = (props: DialogItemType) => {
+const DialogItem = (props: any) => {
   return <div className={`${s.dialog} ${s.active}`}>
     <NavLink to={'/dialogs/' + props.id}>{props.name}</NavLink>
   </div>

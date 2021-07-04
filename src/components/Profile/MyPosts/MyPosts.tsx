@@ -8,19 +8,14 @@ type MyPostsType = {
   likesCount: number
 }
 
-type MyPostsPropsType = {
+export type MyPostsPropsType = {
   postsData: Array<MyPostsType>
 }
 
-let posts = [
-  {id: 1, message: 'Hi, how are you?', likesCount: 8},
-  {id: 2, message: 'It\'s my first post', likesCount: 15}
-];
+const MyPosts = (props: any) => {
+  let postsElements =
+    props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
-let postsElements = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>
-)
-
-const MyPosts = (props: MyPostsPropsType) => {
   return (
     <div className={s.postsBlocks}>
       <h3>My posts</h3>

@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+let posts = [
+  {id: 1, message: 'Hi, how are you?', likesCount: 8},
+  {id: 2, message: 'It\'s my first post', likesCount: 15}
+];
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <App posts={posts}/>, document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
