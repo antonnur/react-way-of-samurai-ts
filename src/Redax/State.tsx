@@ -25,12 +25,12 @@ export type DialogsPageType = {
   messages: Array<MessageType>
 }
 
-// type SidebarType = {}
+type SidebarType = {}
 
 export type StateType = {
   profilePage: ProfilePageType
   dialogsPage: DialogsPageType
-  // sidebar: SidebarType
+  sidebar: SidebarType
 }
 
 let state: StateType = {
@@ -58,7 +58,7 @@ let state: StateType = {
       {id: 5, message: 'What where'}
     ]
   },
-  // sidebar: {}
+  sidebar: {}
 }
 
 export default state

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {ProfilePageType} from "../../Redax/State";
+import {ProfilePageType} from "../../../Redax/State";
 
 const MyPosts = (props: ProfilePageType) => {
   let postsElements =

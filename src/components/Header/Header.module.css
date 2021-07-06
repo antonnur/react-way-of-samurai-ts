@@ -7,3 +7,12 @@
     width: 40px;
 }
 
+.header a {
+    margin-left: 30px;
+    padding: 5px 14px;
+
+    border-radius: 7px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #fdcf2f;
+    }
