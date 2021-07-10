@@ -18,6 +18,7 @@ type PostsType = {
 
 export type ProfilePageType = {
   posts: Array<PostsType>
+  newPostText: string
 }
 
 export type DialogsPageType = {
@@ -27,38 +28,70 @@ export type DialogsPageType = {
 
 type SidebarType = {}
 
+type   AddPostType = {
+  // addPost: (postMessage: string) => void
+}
+
 export type StateType = {
   profilePage: ProfilePageType
   dialogsPage: DialogsPageType
   sidebar: SidebarType
 }
 
-let state: StateType = {
-  profilePage: {
-    posts: [
-      {id: 1, message: 'Hi, how are you?', likesCount: 8},
-      {id: 2, message: 'It\'s my first post', likesCount: 15}
-    ]
-  },
+const store = {
+  _state: {
+    profilePage: {
+      posts: [
+        {id: 1, message: 'Hi, how are you?', likesCount: 8},
+        {id: 2, message: 'It\'s my first post', likesCount: 15}
+      ],
+      newPostText: ''
+    },
 
-  dialogsPage: {
-    dialogs: [
-      {id: 1, name: 'Dimych'},
-      {id: 2, name: 'Andrey'},
-      {id: 3, name: 'Sveta'},
-      {id: 4, name: 'Sasha'},
-      {id: 5, name: 'Viktor'},
-      {id: 6, name: 'Valera'}
-    ],
-    messages: [
-      {id: 1, message: 'Hi'},
-      {id: 2, message: 'How is your'},
-      {id: 3, message: 'Yo'},
-      {id: 4, message: 'Are you all right'},
-      {id: 5, message: 'What where'}
-    ]
+    dialogsPage: {
+      dialogs: [
+        {id: 1, name: 'Dimych'},
+        {id: 2, name: 'Andrey'},
+        {id: 3, name: 'Sveta'},
+        {id: 4, name: 'Sasha'},
+        {id: 5, name: 'Viktor'},
+        {id: 6, name: 'Valera'}
+      ],
+      messages: [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'How is your'},
+        {id: 3, message: 'Yo'},
+        {id: 4, message: 'Are you all right'},
+        {id: 5, message: 'What where'}
+      ]
+    },
+    sidebar: {}
   },
-  sidebar: {}
+  getState() {
+    return this._state
+  },
+  _callSubscriber() {
+    console.log('State')
+  },
+  addPost() {
+    let newPost = {
+      id: 5,
+      message: this._state.profilePage.newPostText,
+      likesCount: 0
+    }
+    this._state.profilePage.posts.push(newPost)
+    this._state.profilePage.newPostText = ''
+    this._callSubscriber(this._state)
+  },
+  updateNewPostText(newText: any) {
+    this._state.profilePage.newPostText = newText
+    this._callSubscriber(this._state)
+  },
+  subscribe(observer: any) {
+    this._callSubscriber = observer //pattern - observer (наблюдатель)
+  }
 }
 
-export default state
+export default store
+window.store = store
+//store - OOP

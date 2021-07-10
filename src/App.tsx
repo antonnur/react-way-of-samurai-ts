@@ -12,17 +12,22 @@ import Friends from "./components/Friends/Friends";
 import {StateType} from "./Redax/State";
 
 type PropsType = {
-  state: StateType
+  profilePage: StateType
+  addPost: any
+  updateNewPostText: any
 }
 
-const App = (props: PropsType) => {
+const App = (props: any) => {
   return (
     <div className={'app-wrapper'}>
       <Header/>
       <NavBar/>
       <div className={'app-wrapper__content'}>
         <Route path={'/profile'}
-               render={() => <Profile state={props.state.profilePage}/>}/>
+               render={() => <Profile
+                 profilePage={props.state.profilePage}
+                 addPost={props.addPost}
+                 updateNewPostText={props.updateNewPostText}/>}/>
         <Route path={'/dialogs'}
                render={() => <Dialogs state={props.state.dialogsPage}/>}/>
         <Route path={'/news'} render={() => <News/>}/>

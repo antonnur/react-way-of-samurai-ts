@@ -9,8 +9,13 @@ const MyPosts = (props: ProfilePageType) => {
 
   const newPostElement: any = React.createRef()
 
-  const addPost = () => {
+  const addPost = (props: any) => {
+    props.addPost()
+  }
+
+  const onPostChange = (props: any) => {
     let text = newPostElement.current.values
+    props.updateNewPostText(text)
   }
 
   return (
@@ -18,7 +23,10 @@ const MyPosts = (props: ProfilePageType) => {
       <h3>My posts</h3>
       <div>
         <div>
-          <textarea ref={newPostElement}></textarea>
+          <textarea
+            onChange={onPostChange}
+            ref={newPostElement}
+            value={props.newPostText}/>
         </div>
         <div>
           <button onClick={addPost}>Add post</button>
