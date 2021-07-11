@@ -13,8 +13,6 @@ import {StateType} from "./Redax/State";
 
 type PropsType = {
   profilePage: StateType
-  addPost: any
-  updateNewPostText: any
 }
 
 const App = (props: any) => {
@@ -26,8 +24,8 @@ const App = (props: any) => {
         <Route path={'/profile'}
                render={() => <Profile
                  profilePage={props.state.profilePage}
-                 addPost={props.addPost}
-                 updateNewPostText={props.updateNewPostText}/>}/>
+                 dispatch={props.dispatch}
+               />}/>
         <Route path={'/dialogs'}
                render={() => <Dialogs state={props.state.dialogsPage}/>}/>
         <Route path={'/news'} render={() => <News/>}/>

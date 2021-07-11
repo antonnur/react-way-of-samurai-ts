@@ -10,12 +10,12 @@ const MyPosts = (props: ProfilePageType) => {
   const newPostElement: any = React.createRef()
 
   const addPost = (props: any) => {
-    props.addPost()
+    props.dispatch({type: 'ADD-POST'})
   }
 
   const onPostChange = (props: any) => {
     let text = newPostElement.current.values
-    props.updateNewPostText(text)
+    props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
   }
 
   return (

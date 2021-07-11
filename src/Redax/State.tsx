@@ -28,10 +28,6 @@ export type DialogsPageType = {
 
 type SidebarType = {}
 
-type   AddPostType = {
-  // addPost: (postMessage: string) => void
-}
-
 export type StateType = {
   profilePage: ProfilePageType
   dialogsPage: DialogsPageType
@@ -67,28 +63,31 @@ const store = {
     },
     sidebar: {}
   },
-  getState() {
-    return this._state
-  },
   _callSubscriber() {
     console.log('State')
   },
-  addPost() {
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likesCount: 0
-    }
-    this._state.profilePage.posts.push(newPost)
-    this._state.profilePage.newPostText = ''
-    this._callSubscriber(this._state)
-  },
-  updateNewPostText(newText: any) {
-    this._state.profilePage.newPostText = newText
-    this._callSubscriber(this._state)
+
+  getState() {
+    return this._state
   },
   subscribe(observer: any) {
     this._callSubscriber = observer //pattern - observer (наблюдатель)
+  },
+
+  dispatch(action: any) {
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0
+      }
+      this._state.profilePage.posts.push(newPost)
+      this._state.profilePage.newPostText = ''
+      this._callSubscriber(this._state)
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.newText
+      this._callSubscriber(this._state)
+    }
   }
 }
 
