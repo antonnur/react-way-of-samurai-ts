@@ -10,7 +10,7 @@ type DialogType = {
   name: string
 }
 
-type PostsType = {
+export type PostsType = {
   id: number
   message: string
   likesCount: number
@@ -83,14 +83,16 @@ const store = {
       }
       this._state.profilePage.posts.push(newPost)
       this._state.profilePage.newPostText = ''
-      this._callSubscriber(this._state)
+      this._callSubscriber()
     } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
       this._state.profilePage.newPostText = action.newText
-      this._callSubscriber(this._state)
+      this._callSubscriber()
     }
   }
 }
 
 export default store
+
+// @ts-ignore
 window.store = store
 //store - OOP

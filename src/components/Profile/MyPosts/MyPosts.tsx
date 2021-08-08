@@ -1,9 +1,16 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {ProfilePageType} from "../../../Redax/State";
+import {PostsType} from "../../../Redax/State";
+// import {ProfilePageType} from "../../../Redax/State";
 
-const MyPosts = (props: ProfilePageType) => {
+type MyPostsPropsType = {
+  posts: Array<PostsType>
+  newPostText: string
+  dispatch:any
+}
+
+const MyPosts = (props: MyPostsPropsType) => {
   let postsElements =
     props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
