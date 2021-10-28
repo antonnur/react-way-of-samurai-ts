@@ -46,11 +46,11 @@ const store = {
 
     dialogsPage: {
       dialogs: [
-        {id: 1, name: 'Dimych'},
+        {id: 1, name: 'Nadiya'},
         {id: 2, name: 'Andrey'},
-        {id: 3, name: 'Sveta'},
+        {id: 3, name: 'Sonya'},
         {id: 4, name: 'Sasha'},
-        {id: 5, name: 'Viktor'},
+        {id: 5, name: 'Victor'},
         {id: 6, name: 'Valera'}
       ],
       messages: [
