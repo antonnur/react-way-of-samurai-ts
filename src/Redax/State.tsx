@@ -63,18 +63,22 @@ const store = {
     },
     sidebar: {}
   },
-  _callSubscriber() {
-    console.log('State')
+
+  const addPost = () => {
+
   },
 
+  /*_callSubscriber() {              //YouTube
+    console.log('State')
+  }
   getState() {
     return this._state
-  },
-  subscribe(observer: any) {
+  }
+  subscribe(observer: any) {       //YouTube
     this._callSubscriber = observer //pattern - observer (наблюдатель)
-  },
+  }
 
-  dispatch(action: any) {
+  dispatch(action: any) {         //YouTube
     if (action.type === 'ADD-POST') {
       let newPost = {
         id: 5,
@@ -88,11 +92,11 @@ const store = {
       this._state.profilePage.newPostText = action.newText
       this._callSubscriber()
     }
-  }
+  }*/
 }
 
 export default store
 
 // @ts-ignore
-window.store = store
+//window.store = store
 //store - OOP
