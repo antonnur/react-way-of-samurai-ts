@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import {ProfilePageType} from "../../Redax/State";
+import {addPost, changeNewText, ProfilePageType} from "../../Redax/State";
 
 type PropsType = {
   profilePage: ProfilePageType
@@ -13,8 +13,10 @@ const Profile = (props: any) => {
     <div>
       <ProfileInfo/>
       <MyPosts posts={props.profilePage.posts}
-               newPostText={props.profilePage.newPostText}
-               dispatch={props.dispatch}/>
+               message={props.profilePage.newPostText}
+               addPostCallback={addPost}
+               changeNewTextCallback={changeNewText}
+      />
     </div>
   )
 }

@@ -9,10 +9,10 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
-import {StateType} from "./Redax/State";
+import {RootStateType} from "./Redax/State";
 
 type PropsType = {
-  profilePage: StateType
+  profilePage: RootStateType
 }
 
 const App = (props: any) => {
@@ -24,7 +24,6 @@ const App = (props: any) => {
         <Route path={'/profile'}
                render={() => <Profile
                  profilePage={props.state.profilePage}
-                 dispatch={props.dispatch}
                />}/>
         <Route path={'/dialogs'}
                render={() => <Dialogs

@@ -1,28 +1,25 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import {PostsType} from "../../../Redax/State";
-// import {ProfilePageType} from "../../../Redax/State";
 
 type MyPostsPropsType = {
   posts: Array<PostsType>
-  newPostText: string
-  dispatch:any
+  message: string
+  addPostCallback: (postText: string) => void
+  changeNewTextCallback: (newText: string) => void
 }
 
 const MyPosts = (props: MyPostsPropsType) => {
   let postsElements =
-    props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
 
-  const newPostElement: any = React.createRef()
-
-  const addPost = (props: any) => {
-    props.dispatch({type: 'ADD-POST'})
+  const addPost = () => {
+    props.addPostCallback(props.message)
   }
 
-  const onPostChange = (props: any) => {
-    let text = newPostElement.current.values
-    props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+  const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    props.changeNewTextCallback(e.currentTarget.value)
   }
 
   return (
@@ -32,8 +29,8 @@ const MyPosts = (props: MyPostsPropsType) => {
         <div>
           <textarea
             onChange={onPostChange}
-            ref={newPostElement}
-            value={props.newPostText}/>
+            value={props.message}
+          />
         </div>
         <div>
           <button onClick={addPost}>Add post</button>
