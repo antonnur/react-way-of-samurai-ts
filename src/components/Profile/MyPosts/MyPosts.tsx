@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {ActionsTypes, addPostAC, PostsType} from "../../../Redax/State";
+import {ActionsTypes, addPostAC, PostsType, UpdateNewPostTextAC} from "../../../Redax/State";
 
 type MyPostsPropsType = {
   posts: Array<PostsType>
@@ -13,15 +13,12 @@ const MyPosts = (props: MyPostsPropsType) => {
   let postsElements =
     props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
-  const newPostElement: any = React.createRef()
-
   const addPost = () => {
     props.dispatch(addPostAC(props.newPostText))
   }
 
-  const onPostChange = () => {
-    let text = newPostElement.current.values
-    props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+  const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    props.dispatch(UpdateNewPostTextAC(e.currentTarget.value))
   }
 
   return (
@@ -31,7 +28,6 @@ const MyPosts = (props: MyPostsPropsType) => {
         <div>
           <textarea
             onChange={onPostChange}
-            ref={newPostElement}
             value={props.newPostText}/>
         </div>
         <div>
