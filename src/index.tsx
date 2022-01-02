@@ -12,7 +12,6 @@ const rerenderEntireTree = () => {
       />
     </BrowserRouter>, document.getElementById('root'));
 }
-
 // rerenderEntireTree(store.getState())
 rerenderEntireTree()
 

@@ -9,7 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
-import {ActionsTypes, StoreType, UpdateNewPostTextAC} from "./Redax/State";
+import {ActionsTypes, StoreType} from "./Redax/State";
 
 type PropsType = {
   store: StoreType
@@ -17,7 +17,7 @@ type PropsType = {
 }
 
 const App: React.FC<PropsType> = (props) => {
-  const state = props.store.getState()
+  const state = props.store.getState() // - получаем state
   return (
     <div className={'app-wrapper'}>
       <Header/>
@@ -27,6 +27,7 @@ const App: React.FC<PropsType> = (props) => {
                render={() =>
                  <Dialogs
                    state={state.dialogsPage}
+                   dispatch={props.store.dispatch.bind(props.store)}
                  />}/>
         <Route path='/profile'
                render={() =>
