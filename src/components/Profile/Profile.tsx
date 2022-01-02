@@ -2,18 +2,19 @@ import React from 'react';
 import s from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import {ProfilePageType} from "../../Redax/State";
+import {ActionsTypes, ProfilePageType} from "../../Redax/State";
 
 type PropsType = {
-  profilePage: ProfilePageType
+  state: ProfilePageType
+  dispatch: (action: ActionsTypes) => void
 }
 
-const Profile = (props: any) => {
+const Profile = (props: PropsType) => {
   return (
     <div>
       <ProfileInfo/>
-      <MyPosts posts={props.profilePage.posts}
-               newPostText={props.profilePage.newPostText}
+      <MyPosts posts={props.state.posts}
+               newPostText={props.state.newPostText}
                dispatch={props.dispatch}/>
     </div>
   )

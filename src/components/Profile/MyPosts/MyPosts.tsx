@@ -3,13 +3,13 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 import {ActionsTypes, addPostAC, PostsType, UpdateNewPostTextAC} from "../../../Redax/State";
 
-type MyPostsPropsType = {
+type PropsType = {
   posts: Array<PostsType>
   newPostText: string
   dispatch:(action: ActionsTypes) => void
 }
 
-const MyPosts = (props: MyPostsPropsType) => {
+const MyPosts = (props: PropsType) => {
   let postsElements =
     props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 

@@ -118,4 +118,6 @@ export default store
 
 // @ts-ignore
 window.store = store
+// @ts-ignore
+window.state = store._state
 //store - OOP
