@@ -1,4 +1,4 @@
-import {ActionsTypes} from "./State";
+import {ActionsTypes} from "./store";
 
 const initState ={
 

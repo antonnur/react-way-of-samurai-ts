@@ -1,4 +1,4 @@
-import {ActionsTypes} from "./State";
+import {ActionsTypes} from "./store";
 
 export const UpdateNewMessageBodyAC = (body: string) => {
   return {
