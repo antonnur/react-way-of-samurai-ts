@@ -1,23 +1,23 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
 import {Route} from "react-router-dom";
 import Header from './components/Header/Header';
 import NavBar from './components/NavBar/NavBar';
 import Profile from './components/Profile/Profile';
-import Dialogs from "./components/Dialogs/Dialogs";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
-import {ActionsTypes, StoreType} from "./Redax/store";
+import {AppStateType, AppStoreType} from "./Redax/redax-store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 type PropsType = {
-  store: StoreType
-  dispatch: (action: ActionsTypes) => void
+  state: AppStateType
+  store: AppStoreType
 }
 
 const App: React.FC<PropsType> = (props) => {
-  const state = props.store.getState() // - получаем state
+  const state = props.state
   return (
     <div className={'app-wrapper'}>
       <Header/>
@@ -25,16 +25,12 @@ const App: React.FC<PropsType> = (props) => {
       <div className={'app-wrapper__content'}>
         <Route path='/dialogs'
                render={() =>
-                 <Dialogs
-                   state={state.dialogsPage}
-                   dispatch={props.store.dispatch.bind(props.store)}
-                 />}/>
+                 <DialogsContainer
+                   store={props.store}/>}/>
         <Route path='/profile'
                render={() =>
                  <Profile
-                   state={state.profilePage}
-                   dispatch={props.store.dispatch.bind(props.store)}
-                 />}/>
+                   store={props.store}/>}/>
         <Route path={'/news'} render={() => <News/>}/>
         <Route path={'/music'} render={() => <Music/>}/>
         <Route path={'/settings'} render={() => <Settings/>}/>

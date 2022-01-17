@@ -1,21 +1,17 @@
 import React from 'react';
-import s from './Profile.module.css';
-import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
-import {ActionsTypes, ProfilePageType} from "../../Redax/store";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {AppStoreType} from "../../Redax/redax-store";
 
 type PropsType = {
-  state: ProfilePageType
-  dispatch: (action: ActionsTypes) => void
+  store: AppStoreType
 }
 
 const Profile = (props: PropsType) => {
   return (
     <div>
       <ProfileInfo/>
-      <MyPosts posts={props.state.posts}
-               newPostText={props.state.newPostText}
-               dispatch={props.dispatch}/>
+      <MyPostsContainer store={props.store}/>
     </div>
   )
 }
