@@ -8,15 +8,9 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
-import {AppStateType,} from "./Redax/redax-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-type PropsType = {
-  // state: AppStateType
-}
-
-const App: React.FC<PropsType> = (props) => {
-  // const state = props.state
+const App: React.FC = () => {
   return (
     <div className={'app-wrapper'}>
       <Header/>

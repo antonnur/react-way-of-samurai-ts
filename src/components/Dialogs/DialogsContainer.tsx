@@ -6,37 +6,6 @@ import {AppStateType} from "../../Redax/redax-store";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 
-// type PropsType = {
-//   state?: DialogsPageType
-//   dispatch?: (action: ActionsTypes) => void
-//   store: AppStoreType
-// }
-
-// const DialogsContainer = (props: PropsType) => {
-//
-//   return (
-//     <StoreContext.Consumer>
-//       {
-//         (store) => {
-//
-//           const state: DialogsPageType = store.getState().dialogsReducer
-//
-//           const onSendMessageClick = () => {
-//             store.dispatch(SendMessageAC())
-//           }
-//           const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>): void => {
-//             store.dispatch(UpdateNewMessageBodyAC(e.currentTarget.value))
-//           }
-//
-//           return <Dialogs updateNewMessageBody={onNewMessageChange}
-//                           sendMessage={onSendMessageClick}
-//                           dialogsPage={state}/>
-//         }
-//       }
-//     </StoreContext.Consumer>
-//   )
-// }
-
 type MapStateToProps = {
   dialogsPage: DialogsPageType
 }
