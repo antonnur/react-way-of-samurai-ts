@@ -1,15 +1,16 @@
-import React, {ChangeEvent} from 'react';
-import {ActionsTypes, DialogsPageType} from "../../Redax/store";
+import {ChangeEvent} from 'react';
+import {DialogsPageType} from "../../Redax/store";
 import {SendMessageAC, UpdateNewMessageBodyAC} from "../../Redax/dialogs-reducer";
 import Dialogs from "./Dialogs";
-import {AppStoreType} from "../../Redax/redax-store";
+import {AppStateType} from "../../Redax/redax-store";
 import {connect} from "react-redux";
+import {Dispatch} from "redux";
 
-type PropsType = {
-  state?: DialogsPageType
-  dispatch?: (action: ActionsTypes) => void
-  store: AppStoreType
-}
+// type PropsType = {
+//   state?: DialogsPageType
+//   dispatch?: (action: ActionsTypes) => void
+//   store: AppStoreType
+// }
 
 // const DialogsContainer = (props: PropsType) => {
 //
@@ -36,12 +37,21 @@ type PropsType = {
 //   )
 // }
 
-const mapStateToProps = (store: AppStoreType) => {
+type MapStateToProps = {
+  dialogsPage: DialogsPageType
+}
+
+type MapDispatchToProps = {
+  sendMessage: () => void
+  updateNewMessageBody: (e: ChangeEvent<HTMLTextAreaElement>) => void
+}
+
+const mapStateToProps = (state: AppStateType): MapStateToProps => {
   return {
-    dialogsPage: store.getState().dialogsReducer
+    dialogsPage: state.dialogsReducer
   }
 }
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
   return {
     sendMessage: () => {
       dispatch(SendMessageAC())

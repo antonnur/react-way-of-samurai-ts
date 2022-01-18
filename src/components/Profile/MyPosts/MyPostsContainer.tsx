@@ -1,16 +1,16 @@
-import React, {ChangeEvent} from 'react';
-import {ActionsTypes, PostsType} from "../../../Redax/store";
-import {addPostAC, UpdateNewPostTextAC} from "../../../Redax/profile-reducer";
+import {ChangeEvent} from 'react';
+import {addPostAC, PostsType, ProfilePageType, UpdateNewPostTextAC} from "../../../Redax/profile-reducer";
 import MyPosts from "./MyPosts";
-import {AppStoreType} from "../../../Redax/redax-store";
+import {AppStateType} from "../../../Redax/redax-store";
 import {connect} from "react-redux";
+import {Dispatch} from "redux";
 
-type PropsType = {
-  store: AppStoreType
-  posts?: Array<PostsType>
-  newPostText?: string
-  dispatch?: (action: ActionsTypes) => void
-}
+// type PropsType = {
+//   store: AppStoreType
+//   posts?: Array<PostsType>
+//   newPostText?: string
+//   dispatch?: (action: ActionsTypes) => void
+// }
 
 // const MyPostsContainer = (props: PropsType) => {
 //
@@ -38,20 +38,30 @@ type PropsType = {
 //   )
 // }
 
-const mapStateToProps = (store: AppStoreType) => {
+type MapStateToProps = {
+  posts: Array<PostsType>
+  newPostText: string
+}
+
+type MapDispatchToProps = {
+  updateNewPostText: (e: ChangeEvent<HTMLTextAreaElement>) => void
+  addPost: () => void
+}
+
+const mapStateToProps = (state: AppStateType): MapStateToProps => {
   return {
-    posts: store.getState().profileReducer.posts,
-    newPostText: store.getState().profileReducer.newPostText
+    posts: state.profileReducer.posts,
+    newPostText: state.profileReducer.newPostText
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
   return {
     updateNewPostText: (e: ChangeEvent<HTMLTextAreaElement>) => {
       dispatch(UpdateNewPostTextAC(e.currentTarget.value))
     },
     addPost: () => {
-      dispatch(addPostAC(store.getState().profileReducer.newPostText))
+      dispatch(addPostAC())
     }
   }
 }

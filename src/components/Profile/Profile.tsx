@@ -1,10 +1,10 @@
 import React from 'react';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
-import {AppStoreType} from "../../Redax/redax-store";
+// import {AppStoreType} from "../../Redax/redax-store";
 
 type PropsType = {
-  store: AppStoreType
+  // store: AppStoreType
 }
 
 const Profile = (props: PropsType) => {
