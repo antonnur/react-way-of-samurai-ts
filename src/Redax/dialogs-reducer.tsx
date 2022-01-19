@@ -29,7 +29,7 @@ export type DialogsPageType = {
   newMessageBody: string
 }
 
-const initState:DialogsPageType =  {
+const initState: DialogsPageType = {
   dialogs: [
     {id: 1, name: 'Nadiya'},
     {id: 2, name: 'Andrey'},
@@ -48,7 +48,7 @@ const initState:DialogsPageType =  {
   newMessageBody: ''
 }
 
-const dialogsReducer = (state:DialogsPageType = initState, action: ActionsTypes):DialogsPageType => {
+const dialogsReducer = (state: DialogsPageType = initState, action: ActionsTypes): DialogsPageType => {
   switch (action.type) {
     case "UPDATE-NEW-MESSAGE-BODY":
       return {
@@ -56,11 +56,12 @@ const dialogsReducer = (state:DialogsPageType = initState, action: ActionsTypes)
         newMessageBody: action.body
       }
     case "SEND-MESSAGE":
-      let stateCopy = {...state};
-      const body = stateCopy.newMessageBody
-      stateCopy.newMessageBody = ''
-      stateCopy.messages.push({id: 6, message: body})
-      return stateCopy
+      const body = state.newMessageBody
+      return {
+        ...state,
+        newMessageBody: '',
+        messages: [...state.messages, {id: 6, message: body}]
+      }
     default:
       return state
   }
