@@ -2,6 +2,7 @@ import React from 'react';
 import profileReducer, {addPostAC, UpdateNewPostTextAC} from "./profile-reducer";
 import dialogsReducer, {SendMessageAC, UpdateNewMessageBodyAC} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
+import {FollowAC, SetUsersAC, UnFollowAC} from "./users-reducer";
 
 type MessageType = {
   id: number
@@ -46,8 +47,14 @@ export type StoreType = {
   dispatch: (action: ActionsTypes) => void
 }
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof UpdateNewPostTextAC> |
-  ReturnType<typeof UpdateNewMessageBodyAC> | ReturnType<typeof SendMessageAC>
+export type ActionsTypes =
+  ReturnType<typeof addPostAC>
+  | ReturnType<typeof UpdateNewPostTextAC>
+  | ReturnType<typeof UpdateNewMessageBodyAC>
+  | ReturnType<typeof SendMessageAC>
+  | ReturnType<typeof FollowAC>
+  | ReturnType<typeof UnFollowAC>
+  | ReturnType<typeof SetUsersAC>
 
 const store: StoreType = {
   _state: {

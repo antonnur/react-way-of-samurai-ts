@@ -1,4 +1,4 @@
-import {ChangeEvent} from 'react';
+import React, {ChangeEvent} from 'react';
 import {DialogsPageType} from "../../Redax/store";
 import {SendMessageAC, UpdateNewMessageBodyAC} from "../../Redax/dialogs-reducer";
 import Dialogs from "./Dialogs";

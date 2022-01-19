@@ -1,3 +1,4 @@
+import React from 'react';
 import {ActionsTypes} from "./store";
 
 export const addPostAC = () => {

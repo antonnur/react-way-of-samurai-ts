@@ -1,4 +1,4 @@
-import {ChangeEvent} from 'react';
+import React, {ChangeEvent} from 'react';
 import {addPostAC, PostsType, UpdateNewPostTextAC} from "../../../Redax/profile-reducer";
 import MyPosts from "./MyPosts";
 import {AppStateType} from "../../../Redax/redax-store";
