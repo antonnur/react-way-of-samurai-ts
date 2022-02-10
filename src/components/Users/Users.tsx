@@ -9,21 +9,40 @@ type UsersType = {
   follow: (userId: number) => void
   unFollow: (userId: number) => void
   setUsers: (users: Array<UserType>) => void
+  setCurrentPage:(pageNumber: number) => void
+  pageSize: number
+  totalUsersCount: number
+  currentPage: number
 }
 
 class Users extends React.Component<UsersType> {
 
   componentDidMount() {
 
-    axios.get("https://social-network.samuraijs.com/api/1.0/users")
+    axios.get(
+      `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
       .then(response => {
-        // debugger
         this.props.setUsers(response.data.items)
       })
   }
 
   render() {
+
+    const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+
+    const pages = []
+    for (let i = 1; i <= pagesCount; i++) {
+      pages.push(i)
+    }
+
     return <div>
+      <div>
+        {pages.map(p => {
+          return <span className={this.props.currentPage === p ? s.selectedPage : ''}
+                       onClick={() => { this.props.setCurrentPage(p)}}>{p}</span>  // && замена ? : ''
+
+        })}
+      </div>
       {
         this.props.users.map(u => <div key={u.id}>
         <span>
@@ -42,8 +61,8 @@ class Users extends React.Component<UsersType> {
             <div>{u.status}</div>
           </span>
           <span>
-            <div>{"u.location.country"}</div>
-            <div>{"u.location.city"}</div>
+            {/*<div>{"u.location.country"}</div>*/}
+            {/*<div>{"u.location.city"}</div>*/}
           </span>
         </span>
         </div>)

@@ -2,3 +2,7 @@
   padding: 5px;
   max-width: 40px;
 }
+
+.selectedPage {
+  font-weight: bold;
+}
