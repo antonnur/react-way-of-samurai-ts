@@ -10,6 +10,7 @@ type UsersType = {
   unFollow: (userId: number) => void
   setUsers: (users: Array<UserType>) => void
   setCurrentPage:(pageNumber: number) => void
+  setTotalUsersCount:(totalCount: number) => void
   pageSize: number
   totalUsersCount: number
   currentPage: number
@@ -26,6 +27,16 @@ class Users extends React.Component<UsersType> {
       })
   }
 
+  onPageChanged = (pageNumber: number) => {
+    this.props.setCurrentPage(pageNumber)
+    axios.get(
+      `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+    .then(response => {
+      this.props.setUsers(response.data.items)
+      this.props.setTotalUsersCount(response.data.totalCount)
+    })
+  }
+
   render() {
 
     const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
@@ -39,7 +50,7 @@ class Users extends React.Component<UsersType> {
       <div>
         {pages.map(p => {
           return <span className={this.props.currentPage === p ? s.selectedPage : ''}
-                       onClick={() => { this.props.setCurrentPage(p)}}>{p}</span>  // && замена ? : ''
+                       onClick={(e) => { this.onPageChanged(p) }}>{p}</span>  // && замена ? : ''
 
         })}
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import profileReducer, {addPostAC, UpdateNewPostTextAC} from "./profile-reducer";
 import dialogsReducer, {SendMessageAC, UpdateNewMessageBodyAC} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
-import {FollowAC, setCurrentPageAC, SetUsersAC, UnFollowAC} from "./users-reducer";
+import {FollowAC, setCurrentPageAC, setTotalUsersCountAC, SetUsersAC, UnFollowAC} from "./users-reducer";
 
 type MessageType = {
   id: number
@@ -56,6 +56,7 @@ export type ActionsTypes =
   | ReturnType<typeof UnFollowAC>
   | ReturnType<typeof SetUsersAC>
   | ReturnType<typeof setCurrentPageAC>
+  | ReturnType<typeof setTotalUsersCountAC>
 
 const store: StoreType = {
   _state: {
