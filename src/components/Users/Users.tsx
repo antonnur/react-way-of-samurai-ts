@@ -26,7 +26,7 @@ const Users: React.FC<PropsUsersType> =(props)=> {
       <div>
         {pages.map(p => {
           return <span className={props.currentPage === p ? s.selectedPage : ''}
-                       onClick={(e) => { onPageChanged(p) }}>{p}</span>  // && замена ? : ''
+                       onClick={(e) => { props.onPageChanged(p) }}>{p}</span>  // && замена ? : ''
 
         })}
       </div>
