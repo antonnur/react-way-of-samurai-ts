@@ -7,7 +7,7 @@ import {
 import {AppStateType} from "../../Redax/redax-store";
 import axios from "axios";
 import Users from "./Users";
-import preloader from '../../assets/images/preloader.gif'
+import Preloader from "../common/Preloader/Preloader";
 
 type mapStateToProps = {
   users: Array<UserType>
@@ -66,17 +66,14 @@ class UsersContainer extends React.Component<UsersType> {
 
   render() {
     return <>
-      {this.props.isFetching ?
-        <div style={{backgroundColor: 'white'}}>
-          <img src={preloader}/>
-        </div>: null}
+      {this.props.isFetching ? <Preloader /> : null}
       <Users totalUsersCount={this.props.totalUsersCount}
-                     pageSize={this.props.pageSize}
-                     currentPage={this.props.currentPage}
-                     onPageChanged={this.onPageChanged}
-                     users={this.props.users}
-                     follow={this.props.follow}
-                     unFollow={this.props.unFollow}/>
+             pageSize={this.props.pageSize}
+             currentPage={this.props.currentPage}
+             onPageChanged={this.onPageChanged}
+             users={this.props.users}
+             follow={this.props.follow}
+             unFollow={this.props.unFollow}/>
     </>
   }
 }
