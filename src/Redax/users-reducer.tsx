@@ -15,12 +15,12 @@ export type UsersLocation = {
   country: string
 }
 
-export const FollowAC = (userId: number) => ({type: 'FOLLOW', userId,} as const)
-export const UnFollowAC = (userId: number) => ({type: 'UN_FOLLOW', userId,} as const)
-export const SetUsersAC = (users: Array<UserType>) => ({type: 'SET_USERS', users,} as const)
-export const setCurrentPageAC = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage,} as const)
-export const setTotalUsersCountAC = (totalUsersCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalUsersCount,} as const)
-export const toggleIsFetchingAC = (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching,} as const)
+export const follow = (userId: number) => ({type: 'FOLLOW', userId,} as const)
+export const unFollow = (userId: number) => ({type: 'UN_FOLLOW', userId,} as const)
+export const setUsers = (users: Array<UserType>) => ({type: 'SET_USERS', users,} as const)
+export const setCurrentPage = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage,} as const)
+export const setTotalUsersCount = (totalUsersCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalUsersCount,} as const)
+export const toggleIsFetching = (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching,} as const)
 
 export type InitStateType = {
   users: Array<UserType>

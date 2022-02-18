@@ -3,7 +3,7 @@ import profileReducer, {addPostAC, UpdateNewPostTextAC} from "./profile-reducer"
 import dialogsReducer, {SendMessageAC, UpdateNewMessageBodyAC} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import {
-  FollowAC, setCurrentPageAC, setTotalUsersCountAC, SetUsersAC, toggleIsFetchingAC, UnFollowAC
+  follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unFollow
 } from "./users-reducer";
 
 type MessageType = {
@@ -54,12 +54,12 @@ export type ActionsTypes =
   | ReturnType<typeof UpdateNewPostTextAC>
   | ReturnType<typeof UpdateNewMessageBodyAC>
   | ReturnType<typeof SendMessageAC>
-  | ReturnType<typeof FollowAC>
-  | ReturnType<typeof UnFollowAC>
-  | ReturnType<typeof SetUsersAC>
-  | ReturnType<typeof setCurrentPageAC>
-  | ReturnType<typeof setTotalUsersCountAC>
-  | ReturnType<typeof toggleIsFetchingAC>
+  | ReturnType<typeof follow>
+  | ReturnType<typeof unFollow>
+  | ReturnType<typeof setUsers>
+  | ReturnType<typeof setCurrentPage>
+  | ReturnType<typeof setTotalUsersCount>
+  | ReturnType<typeof toggleIsFetching>
 
 const store: StoreType = {
   _state: {
