@@ -1,16 +1,27 @@
-import React from 'react';
 import {ActionsTypes} from "./store";
 
-export const addPostAC = () => {
-  return {
-    type: 'ADD-POST',
-  } as const
+type ContactsType = {
+  facebook: string
+  website: string
+  vk: string
+  twitter: string
+  instagram: string
+  youtube: string
+  github: string
+  mainLink: string
 }
-export const UpdateNewPostTextAC = (newText: string) => {
-  return {
-    type: 'UPDATE-NEW-POST-TEXT',
-    newText: newText
-  } as const
+type PhotosType = {
+  small: string
+  large: string
+}
+export type ApiProfileType = {
+  userId: number
+  lookingForAJob: boolean
+  lookingForAJobDescription: string
+  fullName: string
+  aboutMe: string
+  contacts: ContactsType
+  photos: PhotosType
 }
 
 export type PostsType = {
@@ -22,6 +33,7 @@ export type PostsType = {
 export type ProfilePageType = {
   posts: Array<PostsType>
   newPostText: string
+  profile: null | ApiProfileType
 }
 
 const initState: ProfilePageType = {
@@ -29,8 +41,13 @@ const initState: ProfilePageType = {
     {id: 1, message: 'Hi, how are you?', likesCount: 8},
     {id: 2, message: 'It\'s my first post', likesCount: 15}
   ],
-  newPostText: ''
+  newPostText: '',
+  profile: null,
 }
+
+export const addPostAC = () => ({type: 'ADD-POST',} as const)
+export const setUserProfile = (profile: null | ApiProfileType) => ({type: 'SET-USER-PROFILE', profile,} as const)
+export const UpdateNewPostTextAC = (newText: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: newText,} as const)
 
 const profileReducer = (state: ProfilePageType = initState, action: ActionsTypes): ProfilePageType => {
   switch (action.type) {
@@ -52,6 +69,9 @@ const profileReducer = (state: ProfilePageType = initState, action: ActionsTypes
         ...state,
         newPostText: action.newText
       }
+    }
+    case "SET-USER-PROFILE": {
+      return {...state, profile: action.profile}
     }
     default:
       return state

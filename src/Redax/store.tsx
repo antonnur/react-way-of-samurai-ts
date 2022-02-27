@@ -1,5 +1,5 @@
 import React from 'react';
-import profileReducer, {addPostAC, UpdateNewPostTextAC} from "./profile-reducer";
+import profileReducer, {addPostAC, setUserProfile, UpdateNewPostTextAC} from "./profile-reducer";
 import dialogsReducer, {SendMessageAC, UpdateNewMessageBodyAC} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import {
@@ -54,6 +54,7 @@ export type ActionsTypes =
   | ReturnType<typeof UpdateNewPostTextAC>
   | ReturnType<typeof UpdateNewMessageBodyAC>
   | ReturnType<typeof SendMessageAC>
+  | ReturnType<typeof setUserProfile>
   | ReturnType<typeof follow>
   | ReturnType<typeof unFollow>
   | ReturnType<typeof setUsers>
@@ -61,14 +62,14 @@ export type ActionsTypes =
   | ReturnType<typeof setTotalUsersCount>
   | ReturnType<typeof toggleIsFetching>
 
-const store: StoreType = {
+/*const store: StoreType = {
   _state: {
     profilePage: {
       posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 8},
         {id: 2, message: 'It\'s my first post', likesCount: 15}
       ],
-      newPostText: ''
+      newPostText: '',
     },
     dialogsPage: {
       dialogs: [
@@ -105,12 +106,11 @@ const store: StoreType = {
     this._state.profilePage = profileReducer(this._state.profilePage, action)
     this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
     this._state.sidebar = sidebarReducer(this._state.sidebar, action)
-
     this._callSubscriber()
   }
 }
 
-export default store
+export default store*/
 
 // @ts-ignore
 window.store = store

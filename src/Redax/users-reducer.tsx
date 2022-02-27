@@ -10,17 +10,18 @@ export type UserType = {
   status: string
   location: UsersLocation
 }
+
 export type UsersLocation = {
   city: string
   country: string
 }
 
 export const follow = (userId: number) => ({type: 'FOLLOW', userId,} as const)
-export const unFollow = (userId: number) => ({type: 'UN_FOLLOW', userId,} as const)
-export const setUsers = (users: Array<UserType>) => ({type: 'SET_USERS', users,} as const)
-export const setCurrentPage = (currentPage: number) => ({type: 'SET_CURRENT_PAGE', currentPage,} as const)
-export const setTotalUsersCount = (totalUsersCount: number) => ({type: 'SET_TOTAL_USERS_COUNT', totalUsersCount,} as const)
-export const toggleIsFetching = (isFetching: boolean) => ({type: 'TOGGLE_IS_FETCHING', isFetching,} as const)
+export const unFollow = (userId: number) => ({type: 'UN-FOLLOW', userId,} as const)
+export const setUsers = (users: Array<UserType>) => ({type: 'SET-USERS', users,} as const)
+export const setCurrentPage = (currentPage: number) => ({type: 'SET-CURRENT-PAGE', currentPage,} as const)
+export const setTotalUsersCount = (totalUsersCount: number) => ({type: 'SET-TOTAL-USERS-COUNT', totalUsersCount,} as const)
+export const toggleIsFetching = (isFetching: boolean) => ({type: 'TOGGLE-IS-FETCHING', isFetching,} as const)
 
 export type InitStateType = {
   users: Array<UserType>
@@ -40,7 +41,6 @@ const initState: InitStateType = {
 
 const usersReducer = (state: InitStateType = initState, action: ActionsTypes): InitStateType => {
   switch (action.type) {
-
     case 'FOLLOW':
       return {
         ...state,
@@ -51,8 +51,7 @@ const usersReducer = (state: InitStateType = initState, action: ActionsTypes): I
           return u
         })
       }
-
-    case 'UN_FOLLOW':
+    case 'UN-FOLLOW':
       return {
         ...state,
         users: state.users.map(u => {
@@ -62,14 +61,13 @@ const usersReducer = (state: InitStateType = initState, action: ActionsTypes): I
           return u
         })
       }
-
-    case 'SET_USERS':
+    case 'SET-USERS':
       return {...state, users: action.users}
-    case "SET_CURRENT_PAGE":
+    case "SET-CURRENT-PAGE":
       return {...state, currentPage: action.currentPage}
-    case "SET_TOTAL_USERS_COUNT":
+    case "SET-TOTAL-USERS-COUNT":
       return {...state, totalUsersCount: action.totalUsersCount}
-    case "TOGGLE_IS_FETCHING":
+    case "TOGGLE-IS-FETCHING":
       return {...state, isFetching: action.isFetching}
     default:
       return state
